@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "/home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTxTB_isim_beh.exe" -prj "/home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTxTB_beh.prj" "work.uartTxTB" 

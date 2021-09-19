@@ -1,0 +1,926 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.36 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.36 secs
+ 
+--> 
+Reading design: uartTx.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "uartTx.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "uartTx"
+Output Format                      : NGC
+Target Device                      : xc6slx16-3-ftg256
+
+---- Source Options
+Top Module Name                    : uartTx
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTx.vhd" into library work
+Parsing entity <uartTx>.
+Parsing architecture <Behavioral> of entity <uarttx>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <uartTx> (architecture <Behavioral>) with generics from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <uartTx>.
+    Related source file is "/home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTx.vhd".
+        CLK_FREQ = 50000000
+        CONFIG_BIT_DEPTH = 12
+        MAX_BAUDRATE = 10000000
+        MAX_STOP_BIT = 2
+        INITIAL_BAUD_VAL = 115200
+    Found 4-bit register for signal <dataBitCounter>.
+    Found 2-bit register for signal <stopBitCounter>.
+    Found 26-bit register for signal <baudCounter>.
+    Found 26-bit register for signal <baudCounterLim>.
+    Found 2-bit register for signal <stopBitCounterLim>.
+    Found 1-bit register for signal <busySig>.
+    Found 2-bit register for signal <uartTx_states>.
+    Found 1-bit register for signal <txSig>.
+    Found finite state machine <FSM_0> for signal <uartTx_states>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 10                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 26-bit adder for signal <baudCounter[25]_GND_3_o_add_16_OUT> created at line 99.
+    Found 4-bit adder for signal <dataBitCounter[3]_GND_3_o_add_18_OUT> created at line 102.
+    Found 2-bit adder for signal <stopBitCounter[1]_GND_3_o_add_30_OUT> created at line 119.
+    Found 26-bit subtractor for signal <GND_3_o_GND_3_o_sub_5_OUT<25:0>> created at line 85.
+    Found 1-bit 8-to-1 multiplexer for signal <dataBitCounter[2]_dataInSig[7]_Mux_15_o> created at line 98.
+    Found 1-bit 4-to-1 multiplexer for signal <uartTx_states[1]_GND_3_o_Mux_33_o> created at line 78.
+    Found 26-bit comparator greater for signal <n0017> created at line 100
+    Found 4-bit comparator greater for signal <n0020> created at line 103
+    Found 2-bit comparator greater for signal <PWR_3_o_stopBitSig[1]_LessThan_21_o> created at line 105
+    Found 2-bit comparator greater for signal <n0027> created at line 111
+    Summary:
+	inferred   4 Adder/Subtractor(s).
+	inferred  62 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+	inferred   5 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <uartTx> synthesized.
+
+Synthesizing Unit <div_26u_24u>.
+    Related source file is "".
+    Found 49-bit adder for signal <n2229> created at line 0.
+    Found 49-bit adder for signal <GND_4_o_b[23]_add_3_OUT> created at line 0.
+    Found 48-bit adder for signal <n2233> created at line 0.
+    Found 48-bit adder for signal <GND_4_o_b[23]_add_5_OUT> created at line 0.
+    Found 47-bit adder for signal <n2237> created at line 0.
+    Found 47-bit adder for signal <GND_4_o_b[23]_add_7_OUT> created at line 0.
+    Found 46-bit adder for signal <n2241> created at line 0.
+    Found 46-bit adder for signal <GND_4_o_b[23]_add_9_OUT> created at line 0.
+    Found 45-bit adder for signal <n2245> created at line 0.
+    Found 45-bit adder for signal <GND_4_o_b[23]_add_11_OUT> created at line 0.
+    Found 44-bit adder for signal <n2249> created at line 0.
+    Found 44-bit adder for signal <GND_4_o_b[23]_add_13_OUT> created at line 0.
+    Found 43-bit adder for signal <n2253> created at line 0.
+    Found 43-bit adder for signal <GND_4_o_b[23]_add_15_OUT> created at line 0.
+    Found 42-bit adder for signal <n2257> created at line 0.
+    Found 42-bit adder for signal <GND_4_o_b[23]_add_17_OUT> created at line 0.
+    Found 41-bit adder for signal <n2261> created at line 0.
+    Found 41-bit adder for signal <GND_4_o_b[23]_add_19_OUT> created at line 0.
+    Found 40-bit adder for signal <n2265> created at line 0.
+    Found 40-bit adder for signal <GND_4_o_b[23]_add_21_OUT> created at line 0.
+    Found 39-bit adder for signal <n2269> created at line 0.
+    Found 39-bit adder for signal <GND_4_o_b[23]_add_23_OUT> created at line 0.
+    Found 38-bit adder for signal <n2273> created at line 0.
+    Found 38-bit adder for signal <GND_4_o_b[23]_add_25_OUT> created at line 0.
+    Found 37-bit adder for signal <n2277> created at line 0.
+    Found 37-bit adder for signal <GND_4_o_b[23]_add_27_OUT> created at line 0.
+    Found 36-bit adder for signal <n2281> created at line 0.
+    Found 36-bit adder for signal <GND_4_o_b[23]_add_29_OUT> created at line 0.
+    Found 35-bit adder for signal <n2285> created at line 0.
+    Found 35-bit adder for signal <GND_4_o_b[23]_add_31_OUT> created at line 0.
+    Found 34-bit adder for signal <n2289> created at line 0.
+    Found 34-bit adder for signal <GND_4_o_b[23]_add_33_OUT> created at line 0.
+    Found 33-bit adder for signal <n2293> created at line 0.
+    Found 33-bit adder for signal <GND_4_o_b[23]_add_35_OUT> created at line 0.
+    Found 32-bit adder for signal <n2297> created at line 0.
+    Found 32-bit adder for signal <GND_4_o_b[23]_add_37_OUT> created at line 0.
+    Found 31-bit adder for signal <n2301> created at line 0.
+    Found 31-bit adder for signal <GND_4_o_b[23]_add_39_OUT> created at line 0.
+    Found 30-bit adder for signal <n2305> created at line 0.
+    Found 30-bit adder for signal <GND_4_o_b[23]_add_41_OUT> created at line 0.
+    Found 29-bit adder for signal <n2309> created at line 0.
+    Found 29-bit adder for signal <GND_4_o_b[23]_add_43_OUT> created at line 0.
+    Found 28-bit adder for signal <n2313> created at line 0.
+    Found 28-bit adder for signal <GND_4_o_b[23]_add_45_OUT> created at line 0.
+    Found 27-bit adder for signal <n2317> created at line 0.
+    Found 27-bit adder for signal <GND_4_o_b[23]_add_47_OUT> created at line 0.
+    Found 26-bit adder for signal <n2321> created at line 0.
+    Found 26-bit adder for signal <a[25]_b[23]_add_49_OUT[25:0]> created at line 0.
+    Found 26-bit adder for signal <n2325> created at line 0.
+    Found 26-bit adder for signal <a[25]_GND_4_o_add_51_OUT[25:0]> created at line 0.
+    Found 50-bit adder for signal <GND_4_o_b[23]_add_1_OUT> created at line 0.
+    Found 50-bit comparator lessequal for signal <BUS_0001> created at line 0
+    Found 49-bit comparator lessequal for signal <BUS_0002> created at line 0
+    Found 48-bit comparator lessequal for signal <BUS_0003> created at line 0
+    Found 47-bit comparator lessequal for signal <BUS_0004> created at line 0
+    Found 46-bit comparator lessequal for signal <BUS_0005> created at line 0
+    Found 45-bit comparator lessequal for signal <BUS_0006> created at line 0
+    Found 44-bit comparator lessequal for signal <BUS_0007> created at line 0
+    Found 43-bit comparator lessequal for signal <BUS_0008> created at line 0
+    Found 42-bit comparator lessequal for signal <BUS_0009> created at line 0
+    Found 41-bit comparator lessequal for signal <BUS_0010> created at line 0
+    Found 40-bit comparator lessequal for signal <BUS_0011> created at line 0
+    Found 39-bit comparator lessequal for signal <BUS_0012> created at line 0
+    Found 38-bit comparator lessequal for signal <BUS_0013> created at line 0
+    Found 37-bit comparator lessequal for signal <BUS_0014> created at line 0
+    Found 36-bit comparator lessequal for signal <BUS_0015> created at line 0
+    Found 35-bit comparator lessequal for signal <BUS_0016> created at line 0
+    Found 34-bit comparator lessequal for signal <BUS_0017> created at line 0
+    Found 33-bit comparator lessequal for signal <BUS_0018> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0019> created at line 0
+    Found 31-bit comparator lessequal for signal <BUS_0020> created at line 0
+    Found 30-bit comparator lessequal for signal <BUS_0021> created at line 0
+    Found 29-bit comparator lessequal for signal <BUS_0022> created at line 0
+    Found 28-bit comparator lessequal for signal <BUS_0023> created at line 0
+    Found 27-bit comparator lessequal for signal <BUS_0024> created at line 0
+    Found 26-bit comparator lessequal for signal <BUS_0025> created at line 0
+    Found 26-bit comparator lessequal for signal <BUS_0026> created at line 0
+    Found 26-bit comparator lessequal for signal <BUS_0027> created at line 0
+    Summary:
+	inferred  51 Adder/Subtractor(s).
+	inferred  27 Comparator(s).
+	inferred 601 Multiplexer(s).
+Unit <div_26u_24u> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 55
+ 2-bit adder                                           : 1
+ 26-bit adder                                          : 5
+ 26-bit subtractor                                     : 1
+ 27-bit adder                                          : 2
+ 28-bit adder                                          : 2
+ 29-bit adder                                          : 2
+ 30-bit adder                                          : 2
+ 31-bit adder                                          : 2
+ 32-bit adder                                          : 2
+ 33-bit adder                                          : 2
+ 34-bit adder                                          : 2
+ 35-bit adder                                          : 2
+ 36-bit adder                                          : 2
+ 37-bit adder                                          : 2
+ 38-bit adder                                          : 2
+ 39-bit adder                                          : 2
+ 4-bit adder                                           : 1
+ 40-bit adder                                          : 2
+ 41-bit adder                                          : 2
+ 42-bit adder                                          : 2
+ 43-bit adder                                          : 2
+ 44-bit adder                                          : 2
+ 45-bit adder                                          : 2
+ 46-bit adder                                          : 2
+ 47-bit adder                                          : 2
+ 48-bit adder                                          : 2
+ 49-bit adder                                          : 2
+ 50-bit adder                                          : 1
+# Registers                                            : 7
+ 1-bit register                                        : 2
+ 2-bit register                                        : 2
+ 26-bit register                                       : 2
+ 4-bit register                                        : 1
+# Comparators                                          : 31
+ 2-bit comparator greater                              : 2
+ 26-bit comparator greater                             : 1
+ 26-bit comparator lessequal                           : 3
+ 27-bit comparator lessequal                           : 1
+ 28-bit comparator lessequal                           : 1
+ 29-bit comparator lessequal                           : 1
+ 30-bit comparator lessequal                           : 1
+ 31-bit comparator lessequal                           : 1
+ 32-bit comparator lessequal                           : 1
+ 33-bit comparator lessequal                           : 1
+ 34-bit comparator lessequal                           : 1
+ 35-bit comparator lessequal                           : 1
+ 36-bit comparator lessequal                           : 1
+ 37-bit comparator lessequal                           : 1
+ 38-bit comparator lessequal                           : 1
+ 39-bit comparator lessequal                           : 1
+ 4-bit comparator greater                              : 1
+ 40-bit comparator lessequal                           : 1
+ 41-bit comparator lessequal                           : 1
+ 42-bit comparator lessequal                           : 1
+ 43-bit comparator lessequal                           : 1
+ 44-bit comparator lessequal                           : 1
+ 45-bit comparator lessequal                           : 1
+ 46-bit comparator lessequal                           : 1
+ 47-bit comparator lessequal                           : 1
+ 48-bit comparator lessequal                           : 1
+ 49-bit comparator lessequal                           : 1
+ 50-bit comparator lessequal                           : 1
+# Multiplexers                                         : 606
+ 1-bit 2-to-1 multiplexer                              : 599
+ 1-bit 4-to-1 multiplexer                              : 1
+ 1-bit 8-to-1 multiplexer                              : 1
+ 2-bit 2-to-1 multiplexer                              : 1
+ 26-bit 2-to-1 multiplexer                             : 3
+ 4-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <uartTx>.
+The following registers are absorbed into counter <baudCounter>: 1 register on signal <baudCounter>.
+The following registers are absorbed into counter <stopBitCounter>: 1 register on signal <stopBitCounter>.
+Unit <uartTx> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 29
+ 26-bit adder                                          : 2
+ 26-bit adder carry in                                 : 25
+ 26-bit subtractor                                     : 1
+ 4-bit adder                                           : 1
+# Counters                                             : 2
+ 2-bit up counter                                      : 1
+ 26-bit up counter                                     : 1
+# Registers                                            : 34
+ Flip-Flops                                            : 34
+# Comparators                                          : 31
+ 2-bit comparator greater                              : 2
+ 26-bit comparator greater                             : 1
+ 26-bit comparator lessequal                           : 3
+ 27-bit comparator lessequal                           : 1
+ 28-bit comparator lessequal                           : 1
+ 29-bit comparator lessequal                           : 1
+ 30-bit comparator lessequal                           : 1
+ 31-bit comparator lessequal                           : 1
+ 32-bit comparator lessequal                           : 1
+ 33-bit comparator lessequal                           : 1
+ 34-bit comparator lessequal                           : 1
+ 35-bit comparator lessequal                           : 1
+ 36-bit comparator lessequal                           : 1
+ 37-bit comparator lessequal                           : 1
+ 38-bit comparator lessequal                           : 1
+ 39-bit comparator lessequal                           : 1
+ 4-bit comparator greater                              : 1
+ 40-bit comparator lessequal                           : 1
+ 41-bit comparator lessequal                           : 1
+ 42-bit comparator lessequal                           : 1
+ 43-bit comparator lessequal                           : 1
+ 44-bit comparator lessequal                           : 1
+ 45-bit comparator lessequal                           : 1
+ 46-bit comparator lessequal                           : 1
+ 47-bit comparator lessequal                           : 1
+ 48-bit comparator lessequal                           : 1
+ 49-bit comparator lessequal                           : 1
+ 50-bit comparator lessequal                           : 1
+# Multiplexers                                         : 605
+ 1-bit 2-to-1 multiplexer                              : 599
+ 1-bit 4-to-1 multiplexer                              : 1
+ 1-bit 8-to-1 multiplexer                              : 1
+ 26-bit 2-to-1 multiplexer                             : 3
+ 4-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <FSM_0> on signal <uartTx_states[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ idle  | 00
+ start | 01
+ send  | 11
+ stop  | 10
+-------------------
+
+Optimizing unit <uartTx> ...
+
+Optimizing unit <div_26u_24u> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block uartTx, actual ratio is 16.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 64
+ Flip-Flops                                            : 64
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : uartTx.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 2194
+#      GND                         : 1
+#      INV                         : 42
+#      LUT1                        : 60
+#      LUT2                        : 30
+#      LUT3                        : 142
+#      LUT4                        : 500
+#      LUT5                        : 228
+#      LUT6                        : 197
+#      MUXCY                       : 604
+#      MUXF7                       : 1
+#      VCC                         : 1
+#      XORCY                       : 388
+# FlipFlops/Latches                : 64
+#      FD                          : 33
+#      FDE                         : 31
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 37
+#      IBUF                        : 35
+#      OBUF                        : 2
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16ftg256-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              64  out of  18224     0%  
+ Number of Slice LUTs:                 1199  out of   9112    13%  
+    Number used as Logic:              1199  out of   9112    13%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1227
+   Number with an unused Flip Flop:    1163  out of   1227    94%  
+   Number with an unused LUT:            28  out of   1227     2%  
+   Number of fully used LUT-FF pairs:    36  out of   1227     2%  
+   Number of unique control sets:         4
+
+IO Utilization: 
+ Number of IOs:                          38
+ Number of bonded IOBs:                  38  out of    186    20%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 64    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 4.951ns (Maximum Frequency: 201.975MHz)
+   Minimum input arrival time before clock: 94.788ns
+   Maximum output required time after clock: 3.634ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.951ns (frequency: 201.975MHz)
+  Total number of paths / destination ports: 26183 / 67
+-------------------------------------------------------------------------
+Delay:               4.951ns (Levels of Logic = 30)
+  Source:            baudCounter_0 (FF)
+  Destination:       stopBitCounter_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: baudCounter_0 to stopBitCounter_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               3   0.447   0.650  baudCounter_0 (baudCounter_0)
+     INV:I->O              1   0.206   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_lut<0>_INV_0 (Madd_baudCounter[25]_GND_3_o_add_16_OUT_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<0> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<1> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<2> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<3> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<4> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<5> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<6> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<7> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<8> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<9> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<10> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<11> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<11>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<12> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<12>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<13> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<13>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<14> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<14>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<15> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<15>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<16> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<16>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<17> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<17>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<18> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<18>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<19> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<19>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<20> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<20>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<21> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<21>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<22> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<22>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<23> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<23>)
+     MUXCY:CI->O           0   0.019   0.000  Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<24> (Madd_baudCounter[25]_GND_3_o_add_16_OUT_cy<24>)
+     XORCY:CI->O           2   0.180   0.864  Madd_baudCounter[25]_GND_3_o_add_16_OUT_xor<25> (baudCounter[25]_GND_3_o_add_16_OUT<25>)
+     LUT4:I0->O            0   0.203   0.000  Mcompar_n0017_lutdi12 (Mcompar_n0017_lutdi12)
+     MUXCY:DI->O          34   0.145   1.321  Mcompar_n0017_cy<12> (Mcompar_n0017_cy<12>)
+     LUT6:I5->O            1   0.205   0.000  uartTx_states_FSM_FFd1-In (uartTx_states_FSM_FFd1-In)
+     FD:D                      0.102          uartTx_states_FSM_FFd1
+    ----------------------------------------
+    Total                      4.951ns (2.116ns logic, 2.835ns route)
+                                       (42.7% logic, 57.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 1492509204391767834339720423869987684352 / 92
+-------------------------------------------------------------------------
+Offset:              94.788ns (Levels of Logic = 275)
+  Source:            baudrate<1> (PAD)
+  Destination:       baudCounterLim_25 (FF)
+  Destination Clock: clk rising
+
+  Data Path: baudrate<1> to baudCounterLim_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            83   1.222   2.110  baudrate_1_IBUF (baudrate_1_IBUF)
+     LUT5:I0->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_lut<0> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<0> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<3>)
+     MUXCY:CI->O           4   0.213   0.788  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<4> (PWR_3_o_baudrateSig[23]_div_3_OUT<25>)
+     LUT2:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_198_o1171 (PWR_3_o_baudrateSig[23]_div_3/a[25]_GND_4_o_MUX_173_o)
+     LUT5:I1->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_lutdi (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_lutdi)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<0> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<4>)
+     MUXCY:CI->O           6   0.213   0.992  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<5> (PWR_3_o_baudrateSig[23]_div_3_OUT<24>)
+     LUT4:I0->O            2   0.203   0.721  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_294_o1171 (PWR_3_o_baudrateSig[23]_div_3/a[25]_GND_4_o_MUX_269_o)
+     LUT5:I3->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_lut<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<4>)
+     MUXCY:CI->O           8   0.213   1.167  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<5> (PWR_3_o_baudrateSig[23]_div_3_OUT<23>)
+     LUT6:I0->O            3   0.203   0.898  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_388_o1171 (PWR_3_o_baudrateSig[23]_div_3/a[25]_GND_4_o_MUX_363_o)
+     LUT5:I1->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<4>)
+     MUXCY:CI->O          10   0.213   1.221  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<5> (PWR_3_o_baudrateSig[23]_div_3_OUT<22>)
+     LUT6:I0->O            4   0.203   0.931  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_480_o1161 (PWR_3_o_baudrateSig[23]_div_3/a[24]_GND_4_o_MUX_456_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<5>)
+     MUXCY:CI->O          17   0.213   1.392  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<6> (PWR_3_o_baudrateSig[23]_div_3_OUT<21>)
+     LUT6:I0->O            7   0.203   1.021  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_570_o1161 (PWR_3_o_baudrateSig[23]_div_3/a[24]_GND_4_o_MUX_546_o)
+     LUT5:I1->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<5>)
+     MUXCY:CI->O          19   0.213   1.436  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<6> (PWR_3_o_baudrateSig[23]_div_3_OUT<20>)
+     LUT6:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_658_o1141 (PWR_3_o_baudrateSig[23]_div_3/a[22]_GND_4_o_MUX_636_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<5>)
+     MUXCY:CI->O          27   0.213   1.565  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<6> (PWR_3_o_baudrateSig[23]_div_3_OUT<19>)
+     LUT5:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_744_o1161 (PWR_3_o_baudrateSig[23]_div_3/a[24]_GND_4_o_MUX_720_o)
+     LUT5:I1->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_lut<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_lut<3>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<5>)
+     MUXCY:CI->O          25   0.213   1.537  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<6> (PWR_3_o_baudrateSig[23]_div_3_OUT<18>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_828_o1131 (PWR_3_o_baudrateSig[23]_div_3/a[21]_GND_4_o_MUX_807_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<6>)
+     MUXCY:CI->O          32   0.213   1.636  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<7> (PWR_3_o_baudrateSig[23]_div_3_OUT<17>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_910_o1121 (PWR_3_o_baudrateSig[23]_div_3/a[20]_GND_4_o_MUX_890_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<6>)
+     MUXCY:CI->O          42   0.213   1.798  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<7> (PWR_3_o_baudrateSig[23]_div_3_OUT<16>)
+     LUT6:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_990_o191 (PWR_3_o_baudrateSig[23]_div_3/a[18]_GND_4_o_MUX_972_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<6>)
+     MUXCY:CI->O          27   0.213   1.585  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<7> (PWR_3_o_baudrateSig[23]_div_3_OUT<15>)
+     LUT6:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1068_o181 (PWR_3_o_baudrateSig[23]_div_3/a[17]_GND_4_o_MUX_1051_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<7>)
+     MUXCY:CI->O          49   0.213   1.898  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<8> (PWR_3_o_baudrateSig[23]_div_3_OUT<14>)
+     LUT6:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1144_o171 (PWR_3_o_baudrateSig[23]_div_3/a[16]_GND_4_o_MUX_1128_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<7>)
+     MUXCY:CI->O          33   0.213   1.650  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<8> (PWR_3_o_baudrateSig[23]_div_3_OUT<13>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1218_o171 (PWR_3_o_baudrateSig[23]_div_3/a[16]_GND_4_o_MUX_1202_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<7>)
+     MUXCY:CI->O          55   0.213   1.925  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<8> (PWR_3_o_baudrateSig[23]_div_3_OUT<12>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1290_o161 (PWR_3_o_baudrateSig[23]_div_3/a[15]_GND_4_o_MUX_1275_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<8>)
+     MUXCY:CI->O          39   0.213   1.736  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<9> (PWR_3_o_baudrateSig[23]_div_3_OUT<11>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1360_o151 (PWR_3_o_baudrateSig[23]_div_3/a[14]_GND_4_o_MUX_1346_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<8>)
+     MUXCY:CI->O          61   0.213   1.965  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<9> (PWR_3_o_baudrateSig[23]_div_3_OUT<10>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1428_o141 (PWR_3_o_baudrateSig[23]_div_3/a[13]_GND_4_o_MUX_1415_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<8>)
+     MUXCY:CI->O          45   0.213   1.821  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<9> (PWR_3_o_baudrateSig[23]_div_3_OUT<9>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1494_o131 (PWR_3_o_baudrateSig[23]_div_3/a[12]_GND_4_o_MUX_1482_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<8>)
+     MUXCY:CI->O          67   0.213   2.004  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<9> (PWR_3_o_baudrateSig[23]_div_3_OUT<8>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1558_o121 (PWR_3_o_baudrateSig[23]_div_3/a[11]_GND_4_o_MUX_1547_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<9>)
+     MUXCY:CI->O          51   0.213   1.899  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<10> (PWR_3_o_baudrateSig[23]_div_3_OUT<7>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1620_o111 (PWR_3_o_baudrateSig[23]_div_3/a[10]_GND_4_o_MUX_1610_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<9>)
+     MUXCY:CI->O          73   0.213   2.044  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<10> (PWR_3_o_baudrateSig[23]_div_3_OUT<6>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1680_o1251 (PWR_3_o_baudrateSig[23]_div_3/a[9]_GND_4_o_MUX_1671_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<8>)
+     MUXCY:CI->O           2   0.213   0.617  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<9>)
+     LUT6:I5->O           55   0.205   1.925  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<10> (PWR_3_o_baudrateSig[23]_div_3_OUT<5>)
+     LUT5:I0->O            5   0.203   0.943  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1738_o1241 (PWR_3_o_baudrateSig[23]_div_3/a[8]_GND_4_o_MUX_1730_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<10>)
+     MUXCY:CI->O          62   0.213   1.971  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<11> (PWR_3_o_baudrateSig[23]_div_3_OUT<4>)
+     LUT5:I0->O            4   0.203   0.912  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1794_o1231 (PWR_3_o_baudrateSig[23]_div_3/a[7]_GND_4_o_MUX_1787_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<9>)
+     MUXCY:CI->O          26   0.213   1.454  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<10>)
+     LUT6:I2->O            5   0.203   0.943  PWR_3_o_baudrateSig[23]_div_3/Mmux_n2319211 (PWR_3_o_baudrateSig[23]_div_3/n2319<4>)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_lut<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<9>)
+     MUXCY:CI->O           5   0.213   0.715  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<10>)
+     LUT5:I4->O           70   0.205   1.908  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<11> (PWR_3_o_baudrateSig[23]_div_3_OUT<2>)
+     LUT3:I0->O            2   0.205   0.845  PWR_3_o_baudrateSig[23]_div_3/Mmux_n2323201 (PWR_3_o_baudrateSig[23]_div_3/n2323<3>)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_lut<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<9>)
+     MUXCY:CI->O           2   0.213   0.721  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<10>)
+     LUT6:I4->O           26   0.203   1.551  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<11> (PWR_3_o_baudrateSig[23]_div_3_OUT<1>)
+     LUT5:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_3/Mmux_n2218201 (PWR_3_o_baudrateSig[23]_div_3/n2218<3>)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<11> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<11>)
+     MUXCY:CI->O           1   0.213   0.580  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<12> (PWR_3_o_baudrateSig[23]_div_3_OUT<0>)
+     LUT1:I0->O            1   0.205   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<0>_rt (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<0>_rt)
+     MUXCY:S->O            1   0.172   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<0> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<1> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<2> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<3> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<4> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<5> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<6> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<7> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<8> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<9> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<10> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<11> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<11>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<12> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<12>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<13> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<13>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<14> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<14>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<15> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<15>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<16> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<16>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<17> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<17>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<18> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<18>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<19> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<19>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<20> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<20>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<21> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<21>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<22> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<22>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<23> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<23>)
+     MUXCY:CI->O           0   0.019   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<24> (Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_cy<24>)
+     XORCY:CI->O           1   0.180   0.000  Msub_GND_3_o_GND_3_o_sub_5_OUT<25:0>_xor<25> (GND_3_o_GND_3_o_sub_5_OUT<25>)
+     FDE:D                     0.102          baudCounterLim_25
+    ----------------------------------------
+    Total                     94.788ns (25.806ns logic, 68.982ns route)
+                                       (27.2% logic, 72.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              3.634ns (Levels of Logic = 1)
+  Source:            txSig (FF)
+  Destination:       tx (PAD)
+  Source Clock:      clk rising
+
+  Data Path: txSig to tx
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  txSig (txSig)
+     OBUF:I->O                 2.571          tx_OBUF (tx)
+    ----------------------------------------
+    Total                      3.634ns (3.018ns logic, 0.616ns route)
+                                       (83.0% logic, 17.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    4.951|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 56.00 secs
+Total CPU time to Xst completion: 51.04 secs
+ 
+--> 
+
+
+Total memory usage is 498440 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

@@ -1,0 +1,21 @@
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTxTB_isim_beh.exe -prj /home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTxTB_beh.prj work.uartTxTB 
+ISim P.20131013 (signature 0xfbc00daa)
+Number of CPUs detected in this system: 1
+Turning on mult-threading, number of parallel sub-compilation jobs: 0 
+Determining compilation order of HDL files
+Parsing VHDL file "/home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTx.vhd" into library work
+Parsing VHDL file "/home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTxTB.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 95312 KB
+Fuse CPU Usage: 2460 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling architecture behavioral of entity uartTx [\uartTx(100000000,12,10000000,2,...]
+Compiling architecture behavior of entity uarttxtb
+Time Resolution for simulation is 1ps.
+Compiled 5 VHDL Units
+Built simulation executable /home/ise/bahadir_vs_fpga/uart_module_design/uart_tx_module/uartTx/uartTxTB_isim_beh.exe
+Fuse Memory Usage: 104024 KB
+Fuse CPU Usage: 2590 ms
+GCC CPU Usage: 560 ms
