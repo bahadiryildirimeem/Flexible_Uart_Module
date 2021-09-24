@@ -53,6 +53,7 @@ signal	busySig				:	STD_LOGIC	:= '0';
 signal	dataReadySig		:	STD_LOGIC	:= '0';
 signal	readingCompleteSig:	STD_LOGIC;
 signal	dataOutSig			:	STD_LOGIC_VECTOR(7 DOWNTO 0)	:= x"00";
+signal	clrDataReadySig	:	STD_LOGIC := '0';
 
 begin
 rxSig <= rx;
@@ -60,15 +61,16 @@ baudrateSig <= baudrate;
 sampleRateSig <= sampleRate;
 busy <= busySig;
 readingCompleteSig <= readingComplete;
+dataReady <= dataReadySig;
 dataOut <= dataOutSig;
 
 	main: process(clk)
 	variable baudCounter			:	INTEGER RANGE 0 TO CLK_FREQ + 1 := 0;
-	variable baudCountLim		:	INTEGER RANGE 0 TO CLK_FREQ + 1 := (CLK_FREQ / baudrateSig)- 1;
+	variable baudCountLim		:	INTEGER RANGE 0 TO CLK_FREQ + 1;-- := (CLK_FREQ / baudrateSig)- 1;
 	variable sampleRateOffset	:	INTEGER RANGE 0 TO MAX_BAUDRATE + 1;
 	variable sampleRateMinOff	:	INTEGER RANGE 0 TO MAX_BAUDRATE + 1;
-	variable sampleRateMaxOff	:	INTEGER RANGE 0 TO MAX_BAUDRATE + 1 := (CLK_FREQ / baudrateSig)- 1;
-	variable sampleRateCountLim:	INTEGER RANGE 0 TO MAX_BAUDRATE + 1 := sampleRateSig;
+	variable sampleRateMaxOff	:	INTEGER RANGE 0 TO MAX_BAUDRATE + 1;-- := (CLK_FREQ / baudrateSig)- 1;
+	variable sampleRateCountLim:	INTEGER RANGE 0 TO MAX_BAUDRATE + 1;-- := sampleRateSig;
 	variable rcvdData				:	STD_LOGIC_VECTOR(7 DOWNTO 0) := (others => '0');
 	variable	dataBitCounter		:	INTEGER RANGE 0 TO 8 := 0;
 	variable	oldRx					:	STD_LOGIC	:= '1';
@@ -80,7 +82,7 @@ dataOut <= dataOutSig;
 					if(oldRx = '1' and rxSig = '0') then -- falling edge detection.
 						busySig <= '1';
 						baudCounter := 0;
-						baudCountLim := (CLK_FREQ / baudrateSig) - 1;
+						baudCountLim := (CLK_FREQ / baudrateSig ) - 1;
 						sampleRateOffset	:= (baudCountLim + 1) / 2;
 						sampleRateMinOff	:= sampleRateOffset - (sampleRateCountLim / 2);
 						sampleRateMaxOff	:= sampleRateOffset + (sampleRateCountLim / 2);
@@ -96,13 +98,16 @@ dataOut <= dataOutSig;
 					if(oldRx /= rxSig) then
 						oldRx := rxSig;
 					end if;
+					if(clrDataReadySig = '1') then
+						 dataReadySig <= '0';
+					end if;
 				when START =>
 					baudCounter := baudCounter + 1;
 					if((baudCounter >= sampleRateMinOff) and (baudCounter < sampleRateMaxOff)) then
 						if(rxSig /= '0') then
 							uartRxSt <= IDLE;
 						end if;
-					elsif(baudCounter >= sampleRateMaxOff) then
+					elsif(baudCounter >= baudCountLim) then
 						baudCounter := 0;
 						uartRxSt <= RECEIVE;
 					end if;
@@ -114,7 +119,7 @@ dataOut <= dataOutSig;
 						end if;
 					elsif(baudCounter = sampleRateMinOff) then
 						oldRx := rxSig;
-					elsif(baudCounter >= sampleRateMaxOff) then
+					elsif(baudCounter >= baudCountLim) then
 						dataBitCounter := dataBitCounter + 1;
 						baudCounter := 0;
 						if(dataBitCounter >= 8) then
@@ -130,10 +135,14 @@ dataOut <= dataOutSig;
 		end if;
 	end process main;
 
-transferControl:process(readingComplete)
+transferControl:process(clk)
 	begin
-		if(rising_edge(readingComplete)) then
-			dataReadySig <= '0';
+		if(rising_edge(clk)) then
+	 		if(readingComplete = '1') then
+				clrDataReadySig <= '1';
+			else
+				clrDataReadySig <= '0';
+			end if;
 		end if;
 	end process transferControl;
 end Behavioral;

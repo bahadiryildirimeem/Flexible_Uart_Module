@@ -3,3 +3,8 @@ xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_mod
 xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.xst" -ofn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.syr" 
 xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.xst" -ofn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.syr" 
 xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.xst" -ofn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.xst" -ofn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.xst" -ofn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.xst" -ofn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.xst" -ofn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.xst" -ofn "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.syr" 

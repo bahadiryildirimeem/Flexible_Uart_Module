@@ -1,0 +1,4 @@
+
+src/uartRx/_xmsgs/xst.xmsgs
+src/uartRx/_xmsgs/pn_parser.xmsgs
+*.xmsgs

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2021-09-14T17:40:12</DateModified>
+  <DateModified>2021-09-15T12:23:45</DateModified>
   <ModuleName>uartRx</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2021-09-15T12:18:43</SummaryTimeStamp>
   <SavedFilePath>/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/iseconfig/uartRx.xreport</SavedFilePath>
   <ImplementationReportsDirectory>/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx</ImplementationReportsDirectory>
   <DateInitialized>2021-09-14T17:40:12</DateInitialized>

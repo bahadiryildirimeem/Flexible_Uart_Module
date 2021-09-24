@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.18 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.18 secs
  
 --> 
 Reading design: uartRx.prj
@@ -117,15 +117,9 @@ Parsing architecture <Behavioral> of entity <uartrx>.
 =========================================================================
 
 Elaborating entity <uartRx> (architecture <Behavioral>) with generics from library <work>.
-WARNING:HDLCompiler:1127 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 60: Assignment to sampleratesig ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 62: Assignment to readingcompletesig ignored, since the identifier is never used
-WARNING:HDLCompiler:92 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 67: baudratesig should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 70: baudratesig should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 71: sampleratesig should be on the sensitivity list of the process
-WARNING:HDLCompiler:871 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 71: Using initial value 0 for sampleratecountlim since it is never assigned
-WARNING:HDLCompiler:1127 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 65: Assignment to datareadysig ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 133: Assignment to datareadysig ignored, since the identifier is never used
-WARNING:HDLCompiler:634 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 51: Net <sampleRateSig[23]> does not have a driver.
+WARNING:HDLCompiler:1127 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 61: Assignment to sampleratesig ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 63: Assignment to readingcompletesig ignored, since the identifier is never used
+WARNING:HDLCompiler:871 - "/home/ise/bahadir_vs_fpga/uart_module_design/uart_rx_module/uartRx/uartRx.vhd" Line 73: Using initial value 0 for sampleratecountlim since it is never assigned
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -136,40 +130,44 @@ Synthesizing Unit <uartRx>.
         CLK_FREQ = 50000000
         MAX_BAUDRATE = 10000000
 WARNING:Xst:647 - Input <sampleRate> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <readingComplete> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:2935 - Signal 'sampleRateSig', unconnected in block 'uartRx', is tied to its initial value (000000000000000000000000).
     Found 26-bit register for signal <main.baudCounter>.
+    Found 26-bit register for signal <main.baudCountLim>.
     Found 24-bit register for signal <main.sampleRateMinOff>.
     Found 24-bit register for signal <main.sampleRateMaxOff>.
     Found 2-bit register for signal <uartRxSt>.
     Found 4-bit register for signal <main.dataBitCounter>.
     Found 1-bit register for signal <main.oldRx>.
+    Found 1-bit register for signal <dataReadySig>.
     Found 8-bit register for signal <dataOutSig>.
     Found 8-bit register for signal <main.rcvdData>.
+    Found 1-bit register for signal <clrDataReadySig>.
     Found 1-bit register for signal <busySig>.
     Found finite state machine <FSM_0> for signal <uartRxSt>.
     -----------------------------------------------------------------------
     | States             | 3                                              |
-    | Transitions        | 13                                             |
-    | Inputs             | 8                                              |
-    | Outputs            | 2                                              |
+    | Transitions        | 19                                             |
+    | Inputs             | 9                                              |
+    | Outputs            | 3                                              |
     | Clock              | clk (rising_edge)                              |
     | Power Up State     | idle                                           |
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 26-bit adder for signal <main.baudCounter[25]_GND_3_o_add_28_OUT> created at line 110.
-    Found 4-bit adder for signal <main.dataBitCounter[3]_GND_3_o_add_34_OUT> created at line 118.
-    Found 26-bit 3-to-1 multiplexer for signal <uartRxSt[1]_X_3_o_wide_mux_56_OUT> created at line 78.
-    Found 26-bit comparator greater for signal <n0018> created at line 101
-    Found 26-bit comparator greater for signal <GND_3_o_main.baudCounter[25]_LessThan_30_o> created at line 111
-    Found 26-bit comparator greater for signal <main.baudCounter[25]_GND_3_o_LessThan_31_o> created at line 111
-    Found 26-bit comparator equal for signal <GND_3_o_main.baudCounter[25]_equal_33_o> created at line 115
-    Found 4-bit comparator greater for signal <n0035> created at line 120
+    Found 26-bit adder for signal <n0112> created at line 86.
+    Found 26-bit adder for signal <main.baudCounter[25]_GND_3_o_add_23_OUT> created at line 115.
+    Found 4-bit adder for signal <main.dataBitCounter[3]_GND_3_o_add_29_OUT> created at line 123.
+    Found 26-bit subtractor for signal <n0162> created at line 0.
+    Found 26-bit 3-to-1 multiplexer for signal <uartRxSt[1]_X_3_o_wide_mux_51_OUT> created at line 80.
+    Found 26-bit comparator greater for signal <n0019> created at line 106
+    Found 26-bit comparator greater for signal <GND_3_o_main.baudCounter[25]_LessThan_25_o> created at line 116
+    Found 26-bit comparator greater for signal <main.baudCounter[25]_GND_3_o_LessThan_26_o> created at line 116
+    Found 26-bit comparator equal for signal <GND_3_o_main.baudCounter[25]_equal_28_o> created at line 120
+    Found 26-bit comparator greater for signal <n0033> created at line 122
+    Found 4-bit comparator greater for signal <n0036> created at line 125
     Summary:
-	inferred   2 Adder/Subtractor(s).
-	inferred  96 D-type flip-flop(s).
-	inferred   5 Comparator(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred 124 D-type flip-flop(s).
+	inferred   6 Comparator(s).
 	inferred  16 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <uartRx> synthesized.
@@ -264,8 +262,9 @@ Unit <div_26u_24u> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 53
- 26-bit adder                                          : 5
+# Adders/Subtractors                                   : 55
+ 26-bit adder                                          : 6
+ 26-bit subtractor                                     : 1
  27-bit adder                                          : 2
  28-bit adder                                          : 2
  29-bit adder                                          : 2
@@ -291,15 +290,15 @@ Macro Statistics
  48-bit adder                                          : 2
  49-bit adder                                          : 2
  50-bit adder                                          : 1
-# Registers                                            : 8
- 1-bit register                                        : 2
+# Registers                                            : 11
+ 1-bit register                                        : 4
  24-bit register                                       : 2
- 26-bit register                                       : 1
+ 26-bit register                                       : 2
  4-bit register                                        : 1
  8-bit register                                        : 2
-# Comparators                                          : 32
+# Comparators                                          : 33
  26-bit comparator equal                               : 1
- 26-bit comparator greater                             : 3
+ 26-bit comparator greater                             : 4
  26-bit comparator lessequal                           : 3
  27-bit comparator lessequal                           : 1
  28-bit comparator lessequal                           : 1
@@ -346,15 +345,17 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 28
+# Adders/Subtractors                                   : 30
+ 25-bit adder                                          : 1
  26-bit adder                                          : 2
  26-bit adder carry in                                 : 25
+ 26-bit subtractor                                     : 1
  4-bit adder                                           : 1
-# Registers                                            : 96
- Flip-Flops                                            : 96
-# Comparators                                          : 32
+# Registers                                            : 124
+ Flip-Flops                                            : 124
+# Comparators                                          : 33
  26-bit comparator equal                               : 1
- 26-bit comparator greater                             : 3
+ 26-bit comparator greater                             : 4
  26-bit comparator lessequal                           : 3
  27-bit comparator lessequal                           : 1
  28-bit comparator lessequal                           : 1
@@ -395,8 +396,17 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_0> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_0> 
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_1> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_1> 
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_2> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_2> 
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_3> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_3> 
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_4> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_4> 
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_5> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_5> 
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_6> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_6> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_9> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_9> 
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_7> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_7> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_10> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_10> 
+INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_8> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_8> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_11> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_11> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_12> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_12> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_13> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_13> 
@@ -404,21 +414,12 @@ INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_14> in Unit <uartRx> is equi
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_19> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_19> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_15> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_15> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_20> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_20> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_0> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_0> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_16> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_16> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_21> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_21> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_1> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_1> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_17> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_17> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_22> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_22> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_2> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_2> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_18> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_18> 
 INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_23> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_23> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_3> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_3> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_4> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_4> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_5> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_5> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_6> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_6> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_7> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_7> 
-INFO:Xst:2261 - The FF/Latch <main.sampleRateMinOff_8> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMaxOff_8> 
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <FSM_0> on signal <uartRxSt[1:2]> with user encoding.
 ---------------------
@@ -432,12 +433,21 @@ Optimizing FSM <FSM_0> on signal <uartRxSt[1:2]> with user encoding.
 Optimizing unit <uartRx> ...
 
 Optimizing unit <div_26u_24u> ...
-WARNING:Xst:1293 - FF/Latch <main.baudCounter_24> has a constant value of 0 in block <uartRx>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <main.baudCounter_25> has a constant value of 0 in block <uartRx>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_14> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_13> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_15> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_14> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_20> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_19> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_16> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_15> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_21> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_20> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_17> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_16> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_22> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_21> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_18> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_17> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_23> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_22> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_19> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_18> 
+INFO:Xst:2261 - The FF/Latch <main.baudCountLim_24> in Unit <uartRx> is equivalent to the following FF/Latch, which will be removed : <main.sampleRateMinOff_23> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block uartRx, actual ratio is 16.
+Found area constraint ratio of 100 (+ 5) on block uartRx, actual ratio is 18.
 
 Final Macro Processing ...
 
@@ -445,8 +455,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 72
- Flip-Flops                                            : 72
+# Registers                                            : 91
+ Flip-Flops                                            : 91
 
 =========================================================================
 
@@ -469,27 +479,26 @@ Top Level Output File Name         : uartRx.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 2023
+# BELS                             : 2295
 #      GND                         : 1
-#      INV                         : 19
-#      LUT1                        : 33
-#      LUT2                        : 29
-#      LUT3                        : 118
-#      LUT4                        : 508
-#      LUT5                        : 231
-#      LUT6                        : 214
-#      MUXCY                       : 555
-#      MUXF7                       : 4
+#      INV                         : 43
+#      LUT1                        : 47
+#      LUT2                        : 31
+#      LUT3                        : 143
+#      LUT4                        : 593
+#      LUT5                        : 241
+#      LUT6                        : 182
+#      MUXCY                       : 638
 #      VCC                         : 1
-#      XORCY                       : 310
-# FlipFlops/Latches                : 72
-#      FD                          : 32
-#      FDE                         : 40
+#      XORCY                       : 375
+# FlipFlops/Latches                : 91
+#      FD                          : 29
+#      FDE                         : 62
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 34
-#      IBUF                        : 25
-#      OBUF                        : 9
+# IO Buffers                       : 36
+#      IBUF                        : 26
+#      OBUF                        : 10
 
 Device utilization summary:
 ---------------------------
@@ -498,20 +507,20 @@ Selected Device : 6slx16ftg256-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              72  out of  18224     0%  
- Number of Slice LUTs:                 1152  out of   9112    12%  
-    Number used as Logic:              1152  out of   9112    12%  
+ Number of Slice Registers:              91  out of  18224     0%  
+ Number of Slice LUTs:                 1280  out of   9112    14%  
+    Number used as Logic:              1280  out of   9112    14%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   1173
-   Number with an unused Flip Flop:    1101  out of   1173    93%  
-   Number with an unused LUT:            21  out of   1173     1%  
-   Number of fully used LUT-FF pairs:    51  out of   1173     4%  
-   Number of unique control sets:         3
+ Number of LUT Flip Flop pairs used:   1324
+   Number with an unused Flip Flop:    1233  out of   1324    93%  
+   Number with an unused LUT:            44  out of   1324     3%  
+   Number of fully used LUT-FF pairs:    47  out of   1324     3%  
+   Number of unique control sets:         8
 
 IO Utilization: 
  Number of IOs:                          61
- Number of bonded IOBs:                  35  out of    186    18%  
+ Number of bonded IOBs:                  37  out of    186    19%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
@@ -537,7 +546,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 72    |
+clk                                | BUFGP                  | 91    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -548,9 +557,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 5.957ns (Maximum Frequency: 167.868MHz)
-   Minimum input arrival time before clock: 90.037ns
-   Maximum output required time after clock: 3.668ns
+   Minimum period: 7.148ns (Maximum Frequency: 139.907MHz)
+   Minimum input arrival time before clock: 95.715ns
+   Maximum output required time after clock: 3.597ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -559,326 +568,357 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 5.957ns (frequency: 167.868MHz)
-  Total number of paths / destination ports: 53263 / 88
+  Clock period: 7.148ns (frequency: 139.907MHz)
+  Total number of paths / destination ports: 193311 / 112
 -------------------------------------------------------------------------
-Delay:               5.957ns (Levels of Logic = 30)
+Delay:               7.148ns (Levels of Logic = 31)
   Source:            main.baudCounter_0 (FF)
-  Destination:       main.rcvdData_0 (FF)
+  Destination:       main.baudCounter_0 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: main.baudCounter_0 to main.rcvdData_0
+  Data Path: main.baudCounter_0 to main.baudCounter_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  main.baudCounter_0 (main.baudCounter_0)
-     INV:I->O              1   0.206   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_lut<0>_INV_0 (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_lut<0>)
-     MUXCY:S->O            1   0.172   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<0> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<1> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<2> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<3> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<4> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<5> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<6> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<7> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<8> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<8>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<9> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<9>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<10> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<10>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<11> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<11>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<12> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<12>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<13> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<13>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<14> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<14>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<15> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<15>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<16> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<16>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<17> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<17>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<18> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<18>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<19> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<19>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<20> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<20>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<21> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<21>)
-     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<22> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<22>)
-     MUXCY:CI->O           0   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<23> (Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_cy<23>)
-     XORCY:CI->O           7   0.180   1.118  Madd_main.baudCounter[25]_GND_3_o_add_28_OUT_xor<24> (main.baudCounter[25]_GND_3_o_add_28_OUT<24>)
-     LUT5:I0->O            0   0.203   0.000  Mcompar_main.baudCounter[25]_GND_3_o_LessThan_31_o_lutdi11 (Mcompar_main.baudCounter[25]_GND_3_o_LessThan_31_o_lutdi11)
-     MUXCY:DI->O           1   0.145   0.000  Mcompar_main.baudCounter[25]_GND_3_o_LessThan_31_o_cy<11> (Mcompar_main.baudCounter[25]_GND_3_o_LessThan_31_o_cy<11>)
-     MUXCY:CI->O          11   0.019   0.882  Mcompar_main.baudCounter[25]_GND_3_o_LessThan_31_o_cy<12> (Mcompar_main.baudCounter[25]_GND_3_o_LessThan_31_o_cy<12>)
-     INV:I->O             16   0.206   1.004  _n0237_inv1_cepot_INV_0 (_n0237_inv1_cepot)
-     FDE:CE                    0.322          main.rcvdData_0
+     INV:I->O              1   0.206   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_lut<0>_INV_0 (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<0> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<1> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<2> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<3> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<4> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<5> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<6> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<7> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<8> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<9> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<10> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<11> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<11>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<12> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<12>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<13> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<13>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<14> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<14>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<15> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<15>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<16> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<16>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<17> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<17>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<18> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<18>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<19> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<19>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<20> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<20>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<21> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<21>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<22> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<22>)
+     MUXCY:CI->O           1   0.019   0.000  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<23> (Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_cy<23>)
+     XORCY:CI->O          10   0.180   1.085  Madd_main.baudCounter[25]_GND_3_o_add_23_OUT_xor<24> (main.baudCounter[25]_GND_3_o_add_23_OUT<24>)
+     LUT4:I1->O            1   0.205   0.000  Mcompar_n0033_lut<12> (Mcompar_n0033_lut<12>)
+     MUXCY:S->O            9   0.366   1.077  Mcompar_n0033_cy<12> (Mcompar_n0033_cy<12>)
+     LUT4:I0->O            4   0.203   0.684  Mmux_uartRxSt[1]_X_3_o_wide_mux_51_OUT11011 (Mmux_uartRxSt[1]_X_3_o_wide_mux_51_OUT1101)
+     LUT6:I5->O           14   0.205   0.958  Mmux_uartRxSt[1]_X_3_o_wide_mux_51_OUT1101 (Mmux_uartRxSt[1]_X_3_o_wide_mux_51_OUT110)
+     LUT4:I3->O            1   0.205   0.000  Mmux_uartRxSt[1]_X_3_o_wide_mux_51_OUT111 (uartRxSt[1]_X_3_o_wide_mux_51_OUT<0>)
+     FD:D                      0.102          main.baudCounter_0
     ----------------------------------------
-    Total                      5.957ns (2.337ns logic, 3.620ns route)
-                                       (39.2% logic, 60.8% route)
+    Total                      7.148ns (2.728ns logic, 4.420ns route)
+                                       (38.2% logic, 61.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 777162073857640092607827957830909952 / 88
+  Total number of paths / destination ports: 7455441656148650683994352676636092006400 / 122
 -------------------------------------------------------------------------
-Offset:              90.037ns (Levels of Logic = 235)
+Offset:              95.715ns (Levels of Logic = 265)
   Source:            baudrate<1> (PAD)
-  Destination:       main.sampleRateMinOff_0 (FF)
+  Destination:       main.sampleRateMinOff_12 (FF)
   Destination Clock: clk rising
 
-  Data Path: baudrate<1> to main.sampleRateMinOff_0
+  Data Path: baudrate<1> to main.sampleRateMinOff_12
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            80   1.222   2.090  baudrate_1_IBUF (baudrate_1_IBUF)
-     LUT5:I0->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_lut<0> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_lut<0>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<0> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<3>)
-     MUXCY:CI->O           3   0.213   0.755  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<25>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/o<25>)
-     LUT2:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_198_o1171 (PWR_3_o_baudrateSig[23]_div_7/a[25]_GND_4_o_MUX_173_o)
-     LUT5:I1->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_lutdi (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_lutdi)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<0> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<4>)
-     MUXCY:CI->O           6   0.258   0.992  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<24>_cy<5> (n0101<24>)
-     LUT4:I0->O            2   0.203   0.721  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_294_o1171 (PWR_3_o_baudrateSig[23]_div_7/a[25]_GND_4_o_MUX_269_o)
-     LUT5:I3->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_lut<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_lut<1>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<4>)
-     MUXCY:CI->O           8   0.258   1.167  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<23>_cy<5> (n0101<23>)
-     LUT6:I0->O            3   0.203   0.898  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_388_o1171 (PWR_3_o_baudrateSig[23]_div_7/a[25]_GND_4_o_MUX_363_o)
-     LUT5:I1->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_lutdi1 (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_lutdi1)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<4>)
-     MUXCY:CI->O          10   0.258   1.221  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<22>_cy<5> (n0101<22>)
-     LUT6:I0->O            4   0.203   0.931  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_480_o1161 (PWR_3_o_baudrateSig[23]_div_7/a[24]_GND_4_o_MUX_456_o)
-     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_lutdi1 (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_lutdi1)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<5>)
-     MUXCY:CI->O          17   0.258   1.392  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<21>_cy<6> (n0101<21>)
-     LUT6:I0->O            7   0.203   1.021  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_570_o1161 (PWR_3_o_baudrateSig[23]_div_7/a[24]_GND_4_o_MUX_546_o)
-     LUT5:I1->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<5>)
-     MUXCY:CI->O          19   0.258   1.436  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<20>_cy<6> (n0101<20>)
-     LUT6:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_658_o1141 (PWR_3_o_baudrateSig[23]_div_7/a[22]_GND_4_o_MUX_636_o)
-     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_lutdi1 (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_lutdi1)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<5>)
-     MUXCY:CI->O          27   0.258   1.565  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<19>_cy<6> (n0101<19>)
-     LUT5:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_744_o1161 (PWR_3_o_baudrateSig[23]_div_7/a[24]_GND_4_o_MUX_720_o)
-     LUT5:I1->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_lut<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_lut<3>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_cy<5>)
-     MUXCY:CI->O          25   0.258   1.537  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<18>_cy<6> (n0101<18>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_828_o1131 (PWR_3_o_baudrateSig[23]_div_7/a[21]_GND_4_o_MUX_807_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<6>)
-     MUXCY:CI->O          32   0.258   1.636  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<17>_cy<7> (n0101<17>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_910_o1121 (PWR_3_o_baudrateSig[23]_div_7/a[20]_GND_4_o_MUX_890_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<6>)
-     MUXCY:CI->O          42   0.258   1.798  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<16>_cy<7> (n0101<16>)
-     LUT6:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_990_o191 (PWR_3_o_baudrateSig[23]_div_7/a[18]_GND_4_o_MUX_972_o)
-     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_lutdi1 (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_lutdi1)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<6>)
-     MUXCY:CI->O          27   0.258   1.585  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<15>_cy<7> (n0101<15>)
-     LUT6:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1068_o181 (PWR_3_o_baudrateSig[23]_div_7/a[17]_GND_4_o_MUX_1051_o)
-     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_lutdi1 (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_lutdi1)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<7>)
-     MUXCY:CI->O          49   0.258   1.898  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<14>_cy<8> (n0101<14>)
-     LUT6:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1144_o171 (PWR_3_o_baudrateSig[23]_div_7/a[16]_GND_4_o_MUX_1128_o)
-     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_lutdi1 (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_lutdi1)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<7>)
-     MUXCY:CI->O          33   0.258   1.650  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<13>_cy<8> (n0101<13>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1218_o171 (PWR_3_o_baudrateSig[23]_div_7/a[16]_GND_4_o_MUX_1202_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<7>)
-     MUXCY:CI->O          55   0.258   1.925  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<12>_cy<8> (n0101<12>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1290_o161 (PWR_3_o_baudrateSig[23]_div_7/a[15]_GND_4_o_MUX_1275_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<8>)
-     MUXCY:CI->O          39   0.258   1.736  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<11>_cy<9> (n0101<11>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1360_o151 (PWR_3_o_baudrateSig[23]_div_7/a[14]_GND_4_o_MUX_1346_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<8>)
-     MUXCY:CI->O          61   0.258   1.965  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<10>_cy<9> (n0101<10>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1428_o141 (PWR_3_o_baudrateSig[23]_div_7/a[13]_GND_4_o_MUX_1415_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<8>)
-     MUXCY:CI->O          45   0.258   1.821  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<9>_cy<9> (n0101<9>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1494_o131 (PWR_3_o_baudrateSig[23]_div_7/a[12]_GND_4_o_MUX_1482_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<8>)
-     MUXCY:CI->O          67   0.258   2.004  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<8>_cy<9> (n0101<8>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1558_o121 (PWR_3_o_baudrateSig[23]_div_7/a[11]_GND_4_o_MUX_1547_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<8>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<9> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<9>)
-     MUXCY:CI->O          51   0.258   1.899  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<7>_cy<10> (n0101<7>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1620_o111 (PWR_3_o_baudrateSig[23]_div_7/a[10]_GND_4_o_MUX_1610_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<8>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<9> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<9>)
-     MUXCY:CI->O          73   0.258   2.044  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<6>_cy<10> (n0101<6>)
-     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1680_o1251 (PWR_3_o_baudrateSig[23]_div_7/a[9]_GND_4_o_MUX_1671_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<8>)
-     MUXCY:CI->O           1   0.213   0.580  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<9> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<9>)
-     LUT6:I5->O           56   0.205   1.932  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<5>_cy<10> (n0101<5>)
-     LUT5:I0->O            5   0.203   0.943  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1738_o1241 (PWR_3_o_baudrateSig[23]_div_7/a[8]_GND_4_o_MUX_1730_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<8>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<9> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<9>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<10> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<10>)
-     MUXCY:CI->O          62   0.258   1.971  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<4>_cy<11> (n0101<4>)
-     LUT5:I0->O            5   0.203   0.943  PWR_3_o_baudrateSig[23]_div_7/Mmux_a[0]_GND_4_o_MUX_1794_o1231 (PWR_3_o_baudrateSig[23]_div_7/a[7]_GND_4_o_MUX_1787_o)
-     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_lut<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_lut<2>)
-     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<8>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<9> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<9>)
-     MUXCY:CI->O          25   0.213   1.421  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<10> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<3>_cy<10>)
-     LUT5:I2->O            2   0.205   0.864  PWR_3_o_baudrateSig[23]_div_7/Mmux_n2319201 (PWR_3_o_baudrateSig[23]_div_7/n2319<3>)
-     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_lutdi (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_lutdi)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<0> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<8>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<9> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<9>)
-     MUXCY:CI->O           2   0.213   0.617  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<10> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<10>)
-     LUT5:I4->O           24   0.205   1.537  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<2>_cy<11> (n0101<2>)
-     LUT6:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_7/Mmux_n2323211 (PWR_3_o_baudrateSig[23]_div_7/n2323<4>)
-     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_lutdi1 (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_lutdi1)
-     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<1> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<2> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<3> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<4> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<5> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<6> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<7> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<8> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<8>)
-     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<9> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<9>)
-     MUXCY:CI->O           1   0.213   0.684  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<10> (PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<10>)
-     LUT6:I4->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_7/Mcompar_o<1>_cy<11> (n0101<1>)
-     FDE:D                     0.102          main.sampleRateMinOff_0
+     IBUF:I->O            83   1.222   2.110  baudrate_1_IBUF (baudrate_1_IBUF)
+     LUT5:I0->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_lut<0> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<0> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<3>)
+     MUXCY:CI->O           4   0.213   0.788  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<25>_cy<4> (PWR_3_o_baudrateSig[23]_div_3_OUT<25>)
+     LUT2:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_198_o1171 (PWR_3_o_baudrateSig[23]_div_3/a[25]_GND_4_o_MUX_173_o)
+     LUT5:I1->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_lutdi (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_lutdi)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<0> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<4>)
+     MUXCY:CI->O           6   0.213   0.992  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<24>_cy<5> (PWR_3_o_baudrateSig[23]_div_3_OUT<24>)
+     LUT4:I0->O            2   0.203   0.721  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_294_o1171 (PWR_3_o_baudrateSig[23]_div_3/a[25]_GND_4_o_MUX_269_o)
+     LUT5:I3->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_lut<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<4>)
+     MUXCY:CI->O           8   0.213   1.167  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<23>_cy<5> (PWR_3_o_baudrateSig[23]_div_3_OUT<23>)
+     LUT6:I0->O            3   0.203   0.898  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_388_o1171 (PWR_3_o_baudrateSig[23]_div_3/a[25]_GND_4_o_MUX_363_o)
+     LUT5:I1->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<4>)
+     MUXCY:CI->O          10   0.213   1.221  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<22>_cy<5> (PWR_3_o_baudrateSig[23]_div_3_OUT<22>)
+     LUT6:I0->O            4   0.203   0.931  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_480_o1161 (PWR_3_o_baudrateSig[23]_div_3/a[24]_GND_4_o_MUX_456_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<5>)
+     MUXCY:CI->O          17   0.213   1.392  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<21>_cy<6> (PWR_3_o_baudrateSig[23]_div_3_OUT<21>)
+     LUT6:I0->O            7   0.203   1.021  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_570_o1161 (PWR_3_o_baudrateSig[23]_div_3/a[24]_GND_4_o_MUX_546_o)
+     LUT5:I1->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<5>)
+     MUXCY:CI->O          19   0.213   1.436  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<20>_cy<6> (PWR_3_o_baudrateSig[23]_div_3_OUT<20>)
+     LUT6:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_658_o1141 (PWR_3_o_baudrateSig[23]_div_3/a[22]_GND_4_o_MUX_636_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<5>)
+     MUXCY:CI->O          27   0.213   1.565  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<19>_cy<6> (PWR_3_o_baudrateSig[23]_div_3_OUT<19>)
+     LUT5:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_744_o1161 (PWR_3_o_baudrateSig[23]_div_3/a[24]_GND_4_o_MUX_720_o)
+     LUT5:I1->O            1   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_lut<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_lut<3>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<5>)
+     MUXCY:CI->O          25   0.213   1.537  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<18>_cy<6> (PWR_3_o_baudrateSig[23]_div_3_OUT<18>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_828_o1131 (PWR_3_o_baudrateSig[23]_div_3/a[21]_GND_4_o_MUX_807_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<6>)
+     MUXCY:CI->O          32   0.213   1.636  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<17>_cy<7> (PWR_3_o_baudrateSig[23]_div_3_OUT<17>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_910_o1121 (PWR_3_o_baudrateSig[23]_div_3/a[20]_GND_4_o_MUX_890_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<6>)
+     MUXCY:CI->O          42   0.213   1.798  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<16>_cy<7> (PWR_3_o_baudrateSig[23]_div_3_OUT<16>)
+     LUT6:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_990_o191 (PWR_3_o_baudrateSig[23]_div_3/a[18]_GND_4_o_MUX_972_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<6>)
+     MUXCY:CI->O          27   0.213   1.585  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<15>_cy<7> (PWR_3_o_baudrateSig[23]_div_3_OUT<15>)
+     LUT6:I0->O            6   0.203   0.992  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1068_o181 (PWR_3_o_baudrateSig[23]_div_3/a[17]_GND_4_o_MUX_1051_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<7>)
+     MUXCY:CI->O          49   0.213   1.898  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<14>_cy<8> (PWR_3_o_baudrateSig[23]_div_3_OUT<14>)
+     LUT6:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1144_o171 (PWR_3_o_baudrateSig[23]_div_3/a[16]_GND_4_o_MUX_1128_o)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<7>)
+     MUXCY:CI->O          33   0.213   1.650  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<13>_cy<8> (PWR_3_o_baudrateSig[23]_div_3_OUT<13>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1218_o171 (PWR_3_o_baudrateSig[23]_div_3/a[16]_GND_4_o_MUX_1202_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<7>)
+     MUXCY:CI->O          55   0.213   1.925  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<12>_cy<8> (PWR_3_o_baudrateSig[23]_div_3_OUT<12>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1290_o161 (PWR_3_o_baudrateSig[23]_div_3/a[15]_GND_4_o_MUX_1275_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<8>)
+     MUXCY:CI->O          39   0.213   1.736  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<11>_cy<9> (PWR_3_o_baudrateSig[23]_div_3_OUT<11>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1360_o151 (PWR_3_o_baudrateSig[23]_div_3/a[14]_GND_4_o_MUX_1346_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<8>)
+     MUXCY:CI->O          61   0.213   1.965  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<10>_cy<9> (PWR_3_o_baudrateSig[23]_div_3_OUT<10>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1428_o141 (PWR_3_o_baudrateSig[23]_div_3/a[13]_GND_4_o_MUX_1415_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<8>)
+     MUXCY:CI->O          45   0.213   1.821  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<9>_cy<9> (PWR_3_o_baudrateSig[23]_div_3_OUT<9>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1494_o131 (PWR_3_o_baudrateSig[23]_div_3/a[12]_GND_4_o_MUX_1482_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<8>)
+     MUXCY:CI->O          67   0.213   2.004  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<8>_cy<9> (PWR_3_o_baudrateSig[23]_div_3_OUT<8>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1558_o121 (PWR_3_o_baudrateSig[23]_div_3/a[11]_GND_4_o_MUX_1547_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<9>)
+     MUXCY:CI->O          51   0.213   1.899  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<7>_cy<10> (PWR_3_o_baudrateSig[23]_div_3_OUT<7>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1620_o111 (PWR_3_o_baudrateSig[23]_div_3/a[10]_GND_4_o_MUX_1610_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<9>)
+     MUXCY:CI->O          73   0.213   2.044  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<6>_cy<10> (PWR_3_o_baudrateSig[23]_div_3_OUT<6>)
+     LUT5:I0->O            6   0.203   0.973  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1680_o1251 (PWR_3_o_baudrateSig[23]_div_3/a[9]_GND_4_o_MUX_1671_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<8>)
+     MUXCY:CI->O           2   0.213   0.617  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<9>)
+     LUT6:I5->O           55   0.205   1.925  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<5>_cy<10> (PWR_3_o_baudrateSig[23]_div_3_OUT<5>)
+     LUT5:I0->O            5   0.203   0.943  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1738_o1241 (PWR_3_o_baudrateSig[23]_div_3/a[8]_GND_4_o_MUX_1730_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<10>)
+     MUXCY:CI->O          62   0.213   1.971  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<4>_cy<11> (PWR_3_o_baudrateSig[23]_div_3_OUT<4>)
+     LUT5:I0->O            4   0.203   0.912  PWR_3_o_baudrateSig[23]_div_3/Mmux_a[0]_GND_4_o_MUX_1794_o1231 (PWR_3_o_baudrateSig[23]_div_3/a[7]_GND_4_o_MUX_1787_o)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_lut<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<9>)
+     MUXCY:CI->O          26   0.213   1.454  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<3>_cy<10>)
+     LUT6:I2->O            5   0.203   0.943  PWR_3_o_baudrateSig[23]_div_3/Mmux_n2319211 (PWR_3_o_baudrateSig[23]_div_3/n2319<4>)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_lut<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<9>)
+     MUXCY:CI->O           5   0.213   0.715  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<10>)
+     LUT5:I4->O           70   0.205   1.908  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<2>_cy<11> (PWR_3_o_baudrateSig[23]_div_3_OUT<2>)
+     LUT3:I0->O            2   0.205   0.845  PWR_3_o_baudrateSig[23]_div_3/Mmux_n2323201 (PWR_3_o_baudrateSig[23]_div_3/n2323<3>)
+     LUT4:I1->O            1   0.205   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_lut<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<9>)
+     MUXCY:CI->O           2   0.213   0.721  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<10>)
+     LUT6:I4->O           26   0.203   1.551  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<1>_cy<11> (PWR_3_o_baudrateSig[23]_div_3_OUT<1>)
+     LUT5:I0->O            2   0.203   0.864  PWR_3_o_baudrateSig[23]_div_3/Mmux_n2218201 (PWR_3_o_baudrateSig[23]_div_3/n2218<3>)
+     LUT4:I0->O            0   0.203   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_lutdi1 (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_lutdi1)
+     MUXCY:DI->O           1   0.145   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<1> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<2> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<3> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<4> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<5> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<6> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<7> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<8> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<9> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<10> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<11> (PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<11>)
+     MUXCY:CI->O           1   0.213   0.580  PWR_3_o_baudrateSig[23]_div_3/Mcompar_o<0>_cy<12> (PWR_3_o_baudrateSig[23]_div_3_OUT<0>)
+     LUT1:I0->O            1   0.205   0.000  Msub_n0162_cy<0>_rt (Msub_n0162_cy<0>_rt)
+     MUXCY:S->O            1   0.172   0.000  Msub_n0162_cy<0> (Msub_n0162_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<1> (Msub_n0162_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<2> (Msub_n0162_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<3> (Msub_n0162_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<4> (Msub_n0162_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<5> (Msub_n0162_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<6> (Msub_n0162_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<7> (Msub_n0162_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<8> (Msub_n0162_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<9> (Msub_n0162_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<10> (Msub_n0162_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  Msub_n0162_cy<11> (Msub_n0162_cy<11>)
+     XORCY:CI->O           2   0.180   0.617  Msub_n0162_xor<12> (n0162<12>)
+     LUT1:I0->O            1   0.205   0.000  Madd_n0112_Madd_cy<12>_rt (Madd_n0112_Madd_cy<12>_rt)
+     MUXCY:S->O            0   0.172   0.000  Madd_n0112_Madd_cy<12> (Madd_n0112_Madd_cy<12>)
+     XORCY:CI->O           1   0.180   0.000  Madd_n0112_Madd_xor<13> (n0112<13>)
+     FDE:D                     0.102          main.sampleRateMinOff_12
     ----------------------------------------
-    Total                     90.037ns (24.700ns logic, 65.337ns route)
-                                       (27.4% logic, 72.6% route)
+    Total                     95.715ns (26.116ns logic, 69.599ns route)
+                                       (27.3% logic, 72.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 9 / 9
+  Total number of paths / destination ports: 10 / 10
 -------------------------------------------------------------------------
-Offset:              3.668ns (Levels of Logic = 1)
-  Source:            busySig (FF)
-  Destination:       busy (PAD)
+Offset:              3.597ns (Levels of Logic = 1)
+  Source:            dataOutSig_7 (FF)
+  Destination:       dataOut<7> (PAD)
   Source Clock:      clk rising
 
-  Data Path: busySig to busy
+  Data Path: dataOutSig_7 to dataOut<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               3   0.447   0.650  busySig (busySig)
-     OBUF:I->O                 2.571          busy_OBUF (busy)
+     FDE:C->Q              1   0.447   0.579  dataOutSig_7 (dataOutSig_7)
+     OBUF:I->O                 2.571          dataOut_7_OBUF (dataOut<7>)
     ----------------------------------------
-    Total                      3.668ns (3.018ns logic, 0.650ns route)
-                                       (82.3% logic, 17.7% route)
+    Total                      3.597ns (3.018ns logic, 0.579ns route)
+                                       (83.9% logic, 16.1% route)
 
 =========================================================================
 
@@ -890,21 +930,21 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    5.957|         |         |         |
+clk            |    7.148|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 26.00 secs
-Total CPU time to Xst completion: 24.20 secs
+Total REAL time to Xst completion: 54.00 secs
+Total CPU time to Xst completion: 48.32 secs
  
 --> 
 
 
-Total memory usage is 499308 kilobytes
+Total memory usage is 499128 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   14 (   0 filtered)
-Number of infos    :   24 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
+Number of infos    :   35 (   0 filtered)
 
