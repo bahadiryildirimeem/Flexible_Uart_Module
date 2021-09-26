@@ -1,0 +1,5 @@
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.xst" -ofn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.xst" -ofn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.xst" -ofn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.xst" -ofn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.syr" 
+xst -intstyle ise -ifn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.xst" -ofn "/home/ise/bahadir_vs_fpga/ram_module/blockRam/blockRam.syr" 

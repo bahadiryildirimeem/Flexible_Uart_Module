@@ -1,0 +1,2 @@
+vhdl work "blockRam.vhd"
+vhdl work "ramBlkTB.vhd"
