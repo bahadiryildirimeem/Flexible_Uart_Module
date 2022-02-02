@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-
+-- FIFO that uses BRAM as memory source.
 
 entity FIFO_BRAM is
 	 Generic(WDT	: integer range 1 to 1024 := 8;
