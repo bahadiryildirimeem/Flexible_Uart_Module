@@ -1,6 +1,8 @@
 # Flexible_Uart_Module
  To improve my digital design skills and contribute something useful for open source community, I have created this repo. VHDL language was used in module designs.
  
+ This module uses Block RAM as FIFO memory in FPGA. This feature helps the use less logic element utilization. Meaning of the Flexible in that module is you can change baudrate and sample rate during module is running. Module divides the clock and runs according to new divided value.
+ 
 baudrate_calc.xlsx file will help you to configure baudrate value according to sample and clock division values.
  
  I have synthesized UART module in Xilinx ISE 14.7 for Spartan 6 XC6SLX16. You can find device utilization summary following.
