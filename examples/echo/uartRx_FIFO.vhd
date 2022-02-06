@@ -108,9 +108,9 @@ begin
 				if(recTimeoutQ /= 0) then
 				   recTimeoutQ <= recTimeoutQ + 1;
 					if(recTimeOutQ = recTimeOutLimQ) then
-					   recTimeOutQ <= 0;
 					   if(memEmptyQ = '0') then
 							readyQ <= '1';
+							recTimeOutQ <= 0;
 						end if;
 					end if;
 				end if;
