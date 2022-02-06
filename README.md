@@ -14,6 +14,9 @@ baudrate_calc.xlsx file will help you to configure baudrate value according to s
  | Number of Block RAM/FIFO         | 1    |32         | 3%          |
  | Number of BUFG/BUFGCTRLs         | 1    |16         | 6%          |
 
+ In heritance diagram for UART module following.
+ 
+![flexible_uart](https://user-images.githubusercontent.com/45585791/152695710-ec512817-6a29-49c6-92b2-1ce1012e5959.jpg)
  
 # WARNING!
  I have designed this module for my project. So I don't need parity that exist in UART protocol. Be aware that please. 
