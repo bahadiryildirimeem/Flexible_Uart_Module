@@ -8,8 +8,8 @@ entity uartRx is
 	         SAMPLE_DPT : INTEGER := 8;
 	         DIV_DPT    : INTEGER := 12);
     Port ( CLK      : in   STD_LOGIC;
-           SAMPLE   : in   STD_LOGIC_VECTOR (7 downto 0);
-           DIVISOR  : in   STD_LOGIC_VECTOR (11 downto 0);
+           SAMPLE   : in   STD_LOGIC_VECTOR (SAMPLE_DPT-1 downto 0);
+           DIVISOR  : in   STD_LOGIC_VECTOR (DIV_DPT-1 downto 0);
            RX       : in   STD_LOGIC;
 			  DONE     : out  STD_LOGIC;
            BUSY     : out  STD_LOGIC;

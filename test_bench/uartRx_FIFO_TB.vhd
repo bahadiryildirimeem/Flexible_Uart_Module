@@ -1,22 +1,25 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
+  
+ENTITY uartRx_FIFO_TB IS
+END uartRx_FIFO_TB;
  
- 
-ENTITY uartRx_TB IS
-END uartRx_TB;
- 
-ARCHITECTURE behavior OF uartRx_TB IS 
+ARCHITECTURE behavior OF uartRx_FIFO_TB IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT uartRx
+    COMPONENT uartRx_FIFO
     PORT(
          CLK : IN  std_logic;
          SAMPLE : IN  std_logic_vector(7 downto 0);
          DIVISOR : IN  std_logic_vector(11 downto 0);
          RX : IN  std_logic;
-         DONE : OUT  std_logic;
+         MEM_READ : IN  std_logic;
+         READY : OUT  std_logic;
          BUSY : OUT  std_logic;
+         MEM_FULL : OUT  std_logic;
+         MEM_EMPTY : OUT  std_logic;
+         MEM_VLD : OUT  std_logic;
          DATO : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
@@ -27,10 +30,14 @@ ARCHITECTURE behavior OF uartRx_TB IS
    signal SAMPLE : std_logic_vector(7 downto 0) := (others => '0');
    signal DIVISOR : std_logic_vector(11 downto 0) := (others => '0');
    signal RX : std_logic := '1';
+   signal MEM_READ : std_logic := '0';
 
  	--Outputs
-   signal DONE : std_logic;
+   signal READY : std_logic;
    signal BUSY : std_logic;
+   signal MEM_FULL : std_logic;
+   signal MEM_EMPTY : std_logic;
+   signal MEM_VLD : std_logic;
    signal DATO : std_logic_vector(7 downto 0);
 
    -- Clock period definitions
@@ -39,13 +46,17 @@ ARCHITECTURE behavior OF uartRx_TB IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: uartRx PORT MAP (
+   uut: uartRx_FIFO PORT MAP (
           CLK => CLK,
           SAMPLE => SAMPLE,
           DIVISOR => DIVISOR,
           RX => RX,
-          DONE => DONE,
+          MEM_READ => MEM_READ,
+          READY => READY,
           BUSY => BUSY,
+          MEM_FULL => MEM_FULL,
+          MEM_EMPTY => MEM_EMPTY,
+          MEM_VLD => MEM_VLD,
           DATO => DATO
         );
 
@@ -64,6 +75,8 @@ BEGIN
    begin		
       -- hold reset state for 100 ns.
       wait for 100 ns;	
+
+      wait for CLK_period*10;
 
       wait for CLK_period*10;
 		DIVISOR <= x"064"; -- clk_freq / 100 = 1M baud
@@ -85,6 +98,9 @@ BEGIN
 		wait for 500 ns;
 		RX <= '1';
 		wait for 8 us;
+		MEM_READ <= '1';
+		wait for 500 ns;
+      wait;
    end process;
 
 END;
