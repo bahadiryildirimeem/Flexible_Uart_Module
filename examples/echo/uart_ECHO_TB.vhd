@@ -57,14 +57,25 @@ BEGIN
       		RX <= '0';
 		wait for 1 us;
 		RX <= '1';
-		wait for 8 us;
+		wait for 78 us;
 		RX <= '0';
-		wait for 1 us;
+		wait for 8 us;
 		for i in 0 to 7 loop
 		RX <= not RX;
-		wait for 1 us;
+		wait for 8.68 us;
 		end loop;
 		RX <= '1';
+		wait for 8.68 us;
+		for i in 0 to 7 loop
+		RX <= not RX;
+		wait for 8.68 us;
+		end loop;
+		RX <= '1';
+		wait for 8.68 us;
+		for i in 0 to 7 loop
+		RX <= not RX;
+		wait for 8.68 us;
+		end loop;
 		wait for 1 us;
 		RX <= '0';
 		wait for 500 ns;
