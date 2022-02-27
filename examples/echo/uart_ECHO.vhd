@@ -41,11 +41,15 @@ end Component;
 
 signal txStartQ : STD_LOGIC := '0';
 signal txMemWQ : STd_LOGIC := '0';
-signal rxMemR : STD_LOGIC := '0';
+signal rxMemRQ : STD_LOGIC := '0';
 signal rxMemDatoQ : STD_LOGIC_VECTOR(7 DOWNTO 0);
 signal rxMemReadyQ : STD_LOGIC;
 signal rxMemEmptyQ : STD_LOGIC;
 signal readingStartedQ : STD_LOGIC := '0';
+signal txMemEmptyQ : STD_LOGIC;
+signal oldTxMemWQ : STD_LOGIC := '0';
+signal cntStrtQ : STD_LOGIC := '0';
+signal cntQ : INTEGER RANGE 0 TO CLK_FREQ := 0;
 
 begin
 
@@ -55,16 +59,16 @@ U1: uart_FIFO
 	         DIV_DPT => DIV_DPT,
 				MEM_DPT => MEM_DPT)
     Port map( CLK => CLK,
-           STOP_BIT => "00", -- NO Stop Bit
+           STOP_BIT => "01", -- NO Stop Bit
            SAMPLE => x"10", -- 16 Sample Rate
-           DIVISOR => x"032", -- CLK_FREQ / 50
+           DIVISOR => x"1B2", -- CLK_FREQ / 50
            TX_SEND => txStartQ,
            TX_MEM_WE => txMemWQ,
-           RX_MEM_READ => rxMemR,
+           RX_MEM_READ => rxMemRQ,
            RX => RX,
 			  TX_MEM_DATI => rxMemDatoQ,
            TX_MEM_FULL => open,
-           TX_MEM_EMPTY => open,
+           TX_MEM_EMPTY => txMemEmptyQ,
            RX_MEM_READY => rxMemReadyQ,
            RX_BUSY => open,
            RX_MEM_FULL => open,
@@ -77,20 +81,31 @@ process(CLK)
 begin
    if(rising_edge(CLK)) then
 	   txStartQ <= '0';
-	   if(rxMemReadyQ = '1') then
-		   rxMemR <= '1';
-			readingStartedQ <= '1';
+		if(cntStrtQ = '1') then
+			cntQ <= cntQ + 1;
+			txMemWQ <= '1';
+			if(cntQ = 1) then
+				cntStrtQ <= '0';
+				cntQ <= 0;
+				readingStartedQ <= '1';
+			end if;
 		end if;
-		if(readingStartedQ = '1') then
-		   txMemWQ <= '1';
+		oldTxMemWQ <= txMemWQ;
+	   if(rxMemReadyQ = '1') then
+		   rxMemRQ <= '1';
+			cntStrtQ <= '1';
 		end if;
 		if(rxMemEmptyQ = '1') then
+			rxMemRQ <= '0';
+			txMemWQ <= '0';
+		end if;
+		if(oldTxMemWQ = '0') then
 		   if(readingStartedQ = '1') then
 			   readingStartedQ <= '0';
-			   txStartQ <= '1';
+				if(txMemEmptyQ = '0') then
+					txStartQ <= '1';
+				end if;
 			end if;
-		   rxMemR <= '0';
-			txMemWQ <= '0';
 		end if;
 		
 	end if;

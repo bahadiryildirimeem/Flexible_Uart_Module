@@ -90,6 +90,7 @@ U2: FIFO_BRAM
 process(CLK)
 begin
    if(rising_edge(CLK)) then
+		startQ   <= '0';
 	   case states is
 		   when IDLE =>
 			   memReadQ <= '0';

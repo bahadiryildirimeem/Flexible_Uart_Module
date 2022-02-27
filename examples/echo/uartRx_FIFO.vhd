@@ -102,15 +102,15 @@ begin
 			   readyQ <= '0';
 			   if(rxBusyQ = '1') then
 				   busyQ <= '1';
-				   recTimeoutLimQ <= (2 * conv_integer(divisorQ)) + 1;
+				   recTimeoutLimQ <= (3 * conv_integer(divisorQ)) + 1;
 				   states <= RECEIVING;
 				end if;
 				if(recTimeoutQ /= 0) then
 				   recTimeoutQ <= recTimeoutQ + 1;
 					if(recTimeOutQ = recTimeOutLimQ) then
+					   recTimeOutQ <= 0;
 					   if(memEmptyQ = '0') then
 							readyQ <= '1';
-							recTimeOutQ <= 0;
 						end if;
 					end if;
 				end if;

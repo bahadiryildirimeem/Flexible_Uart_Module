@@ -30,8 +30,8 @@ signal txQ      : STD_LOGIC;
 signal states     : statesHandle := IDLE;
 signal baudCnt    : INTEGER RANGE 0 TO CLK_FREQ := 0;
 signal baudCntLim : INTEGER RANGE 0 TO CLK_FREQ := 0;
-signal bitCnt     : INTEGER RANGE 0 TO 7 := 0;
-signal stopCnt    : INTEGER RANGE 0 TO 2 := 0;
+signal bitCnt     : INTEGER RANGE 0 TO 8 := 0;
+signal stopCnt    : INTEGER RANGE 0 TO 3 := 0;
 
 begin
 stopBitQ <= conv_integer(STOP_BIT);
