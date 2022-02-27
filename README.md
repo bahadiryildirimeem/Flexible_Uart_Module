@@ -19,6 +19,14 @@ baudrate_calc.xlsx file will help you to configure baudrate value according to s
  In heritance diagram for UART module following.
  
 ![flexible_uart](https://user-images.githubusercontent.com/45585791/152695710-ec512817-6a29-49c6-92b2-1ce1012e5959.jpg)
+
+Here, you can find my testing setup.
+
+![setup](https://user-images.githubusercontent.com/45585791/155894473-36d3023d-0576-45a3-952e-0a045eade21b.jpeg)
+
+And the implementation results.
+
+![echo_example](https://user-images.githubusercontent.com/45585791/155894412-ef07fa14-90cd-4e2d-9ce8-08ea21cefc99.jpeg)
  
 # WARNING!
  I have designed this module for my project. So I don't need parity that exist in UART protocol. Be aware that please. 
